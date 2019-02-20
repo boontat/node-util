@@ -14,7 +14,12 @@ console.log(`${helloWorld} this is some ES6 JavaScript code`);
 //     to: '', // list of receivers
 //     subject: 'Hello ', // Subject line
 //     text: 'Hello world?', // plain text body
-//     html: '<b>Hello world?</b>' // html body
+//     html: '<b>Hello world?</b>', // html body
+//     attachments : [
+//         {
+//             path: '../test.xlsx'
+//         }
+//     ]
 // };
 
 // m.sendMail(mailOptions).catch(console.error);
