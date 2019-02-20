@@ -6,31 +6,25 @@
 import nodeMailer from 'nodemailer';
 
 class Mailer {
-  sendMail (req, res) {
+  async sendMail(mailOptions) {
+
+    let account = await nodeMailer.createTestAccount();
+
     const transporter = nodeMailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,  //true for 465 port, false for other ports
+      host: 'smtp.ethereal.com',
+      port: 587,
+      secure: false,  //true for 465 port, false for other ports
       auth: {
-        user: '',
-        pass: ''
+        user: account.user,
+        pass: account.pass
       }
     });
-    const mailOptions = {
-      from: '"Your Name" <youremail@example.com>', // sender address
-      to: '', // list of receivers
-      subject: 'Hello ', // Subject line
-      text: 'Hello world?', // plain text body
-      html: '<b>Hello world?</b>' // html body
-    };
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.log(error);
-        res.status(400).send({success: false})
-      } else {
-        res.status(200).send({success: true});
-      }
-    });
+
+    let info = await transporter.sendMail(mailOptions)
+
+    console.log("Message sent: %s", info.messageId);
+    // Preview only available when sending through an Ethereal account
+    console.log("Preview URL: %s", nodeMailer.getTestMessageUrl(info));
   };
 };
 
