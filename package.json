@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node --presets es2015 src/app.js"
+    "start": "babel-node --presets es2015 src/app.js",
+    "configure": "cp .env.example .env"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,7 @@
   },
   "dependencies": {
     "dotenv": "^6.2.0",
+    "exceljs": "^1.7.0",
     "nodemailer": "^5.1.1"
   }
 }

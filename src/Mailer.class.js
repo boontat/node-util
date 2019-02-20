@@ -11,9 +11,9 @@ class Mailer {
     let account = await nodeMailer.createTestAccount();
 
     const transporter = nodeMailer.createTransport({
-      host: 'smtp.ethereal.com',
-      port: 587,
-      secure: false,  //true for 465 port, false for other ports
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      secure: process.env.SMTP_SECURE,  //true for 465 port, false for other ports
       auth: {
         user: account.user,
         pass: account.pass
