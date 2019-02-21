@@ -1,12 +1,22 @@
-require('dotenv').config();
-
 import Mailer from './Mailer.class';
 import ExcelManager from './Excel.class';
+import Utility from './Util.class';
+
+
 
 let helloWorld = 'Hello World!';
 
-console.log(`${helloWorld} this is some ES6 JavaScript code`);
+Utility.printSummary(`${helloWorld} this is some ES6 JavaScript code`, '#');
 
+for (let index = 0; index < 3; index++) {
+    let uniqueAlias = Utility.generateEmailAlias('boontat');
+
+    console.log(uniqueAlias);
+
+}
+
+let randomString = Utility.generateRandomString("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 32);
+console.log(randomString);
 // let m = new Mailer();
 
 // const mailOptions = {
@@ -25,7 +35,7 @@ console.log(`${helloWorld} this is some ES6 JavaScript code`);
 // m.sendMail(mailOptions).catch(console.error);
 
 
-let filename = 'test.xlsx';
+let filename = `test.${process.env.EXCEL_EXTENSION}`;
 let E = new ExcelManager(filename);
 
 try {

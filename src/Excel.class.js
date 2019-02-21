@@ -11,6 +11,10 @@ class ExcelManager {
         this.filename = filename;
     }
 
+    /**
+     * @description Create new workbook if not have one
+     * @version 0.1.0
+     */
     create(){
         if (this.workbook) {
             return this.workbook;
